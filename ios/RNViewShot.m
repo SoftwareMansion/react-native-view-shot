@@ -103,10 +103,12 @@ RCT_EXPORT_METHOD(takeSnapshot:(nonnull NSNumber *)target
       scrollView.frame = savedFrame;
     }
     
-    if (!success) {
-      reject(RCTErrorUnspecified, @"The view cannot be captured. drawViewHierarchyInRect was not successful. This is a potential technical or security limitation.", nil);
-      return;
-    }
+    // Temporarily disable checking output of drawViewHierarchyInRect – on iOS 11 this method always returns NO yet the
+    // snapshot gets created and looks ok
+    // if (!success) {
+    //   reject(RCTErrorUnspecified, @"The view cannot be captured. drawViewHierarchyInRect was not successful. This is a potential technical or security limitation.", nil);
+    //   return;
+    // }
 
     if (!image) {
       reject(RCTErrorUnspecified, @"Failed to capture view snapshot. UIGraphicsGetImageFromCurrentImageContext() returned nil!", nil);
