@@ -33,6 +33,11 @@ RCT_EXPORT_MODULE()
            };
 }
 
++ (BOOL)requiresMainQueueSetup
+{
+    return YES;
+} 
+
 // forked from RN implementation
 // https://github.com/facebook/react-native/blob/f35b372883a76b5666b016131d59268b42f3c40d/React/Modules/RCTUIManager.m#L1367
 
